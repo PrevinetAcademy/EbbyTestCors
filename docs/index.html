@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="referrer" content="no-referrer-when-downgrade" />    
+<title>XSSO</title>
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.8.3.min.js"></script>
+<script>
+
+$(document).ready(function() {
+	$('<iframe id="iframeEbbyChat" frameborder="0" marginwidth="0" marginheight="0" allowfullscreen></iframe>').appendTo('body');	
+});
+
+
+
+function openDialogEbbyChat() {	
+
+    var data = JSON.stringify({
+        codCustomer : $('#codCustomer').val(),
+        secret : $('#secret').val(),
+        page : $('#page').val()
+    });
+    var method = 'open-dialog-ext';            
+    
+    var url = $('#url').val() + method;
+
+    $.ajax({
+        url : url,
+        type : "POST",
+        data : data,
+        contentType : "application/json; charset=utf-8",
+        dataType : "json",
+        accept : {
+            json : 'application/json'
+        },
+        success : function(data) {
+        	var url = data.urlBase + "?xsso=" + data.xsso;        	
+        	var w = $(window).width() * 0.25;
+            var h = $(window).height()* 0.75;    
+        	w = Math.max(w, 320);
+        	h = Math.max(h, 400);
+        	$('#iframeEbbyChat').attr({
+                width: +w,
+                height: +h,
+                src: url
+            });        	
+        }
+    });
+
+	
+}
+
+</script>
+<style>
+#iframeEbbyChat {
+	position: fixed;
+	right:25px;
+	bottom:35px;
+}
+</style>
+</head>
+
+<body>
+
+<input type="hidden" name="url" id='url' value="https://ebby-collaudo.previnet.it/fondi-ebby/api/" />
+
+
+ 
+ <br/> 
+ Cod Customer:
+ <input type="text" name="codCustomer" id='codCustomer' value="" size="30" />
+ <br/>
+ 
+ <br/> 
+ Secret:
+ <input type="password" name="secret" id="secret" value="" size="50" />
+ <br/>
+ 
+ <br/> 
+ Page:
+ <input type="text" name="page" id="page" value="HW" size="50" />
+ <br/>
+ 
+ <br/> 
+ Url dialog:
+ <input type="text" name="urlDialog" id="urlDialog" value="" size="100" />
+ <br/> 
+
+    
+ <br/>
+ <button id='openDialogButton' onclick="openDialogEbbyChat()">OPEN DIALOG</button>
+ <br/>
+
+
+<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+
+  
+ 
+</body>
+
+</html>
