@@ -45,10 +45,18 @@ function openDialogEbbyChat() {
                 src: url
             });        	
         }
-    });
-
-	
+    });	
 }
+
+function openTabEbbyChat() {	
+
+       var urlTab = $('#urlTab').val();
+       $('#xsso').val($('#xsso').val());           	        	
+       $('#formChatbot').attr('action', data.urlBase);
+       $('#formChatbot').submit();
+
+ 
+}	
 
 </script>
 <style>
@@ -63,10 +71,10 @@ function openDialogEbbyChat() {
 <body>
 
 <br/> 
- Url:
+ Url dialog:
  <input type="text" name="url" id="url" value="" size="100" />
  <br/> 	
- 
+
  <br/> 
  Cod Customer:
  <input type="text" name="codCustomer" id='codCustomer' value="" size="30" />
@@ -81,11 +89,25 @@ function openDialogEbbyChat() {
  Page:
  <input type="text" name="page" id="page" value="HW" size="50" />
  <br/>
- 
- 
     
  <br/>
  <button id='openDialogButton' onclick="openDialogEbbyChat()">OPEN DIALOG</button>
+<br/>
+<br/>
+<br/>	
+
+
+<br/> 
+ Url tab xsso:
+ <input type="text" name="urlTab" id="urlTab" value="" size="100" />
+ <br/> 		
+
+<form action="" id="formChatbot" method="post" target="_blank">
+    <input type="text" name="xsso" id="xsso" size="50"/>	
+</form>	
+	
+  <br/>
+ <button id='openDialogButton' onclick="openTabEbbyChat()">OPEN TAB</button>
  <br/>
 
 
