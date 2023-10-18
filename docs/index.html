@@ -3,7 +3,7 @@
 <head>
 <meta name="referrer" content="no-referrer-when-downgrade" />    
 <title>XSSO</title>
-<script type="text/javascript" src="http://code.jquery.com/jquery-1.8.3.min.js"></script>
+<script type="text/javascript" src="https://code.jquery.com/jquery-1.8.3.min.js"></script>
 <script>
 
 $(document).ready(function() {
@@ -34,8 +34,9 @@ function openDialogEbbyChat() {
         },
         success : function(data) {
         	var url = data.urlBase + "?xsso=" + data.xsso;        	
+		console.log('url' + url);
         	var w = $(window).width() * 0.25;
-            var h = $(window).height()* 0.75;    
+                var h = $(window).height()* 0.75;    
         	w = Math.max(w, 320);
         	h = Math.max(h, 400);
         	$('#iframeEbbyChat').attr({
@@ -61,9 +62,10 @@ function openDialogEbbyChat() {
 
 <body>
 
-<input type="hidden" name="url" id='url' value="https://ebby-collaudo.previnet.it/fondi-ebby/api/" />
-
-
+<br/> 
+ Url:
+ <input type="text" name="url" id="url" value="" size="100" />
+ <br/> 	
  
  <br/> 
  Cod Customer:
@@ -80,11 +82,7 @@ function openDialogEbbyChat() {
  <input type="text" name="page" id="page" value="HW" size="50" />
  <br/>
  
- <br/> 
- Url dialog:
- <input type="text" name="urlDialog" id="urlDialog" value="" size="100" />
- <br/> 
-
+ 
     
  <br/>
  <button id='openDialogButton' onclick="openDialogEbbyChat()">OPEN DIALOG</button>
